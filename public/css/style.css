@@ -1,0 +1,24 @@
+@import 'fonts/Oxygen.css';
+@import 'fonts/Amiko.css';
+@import 'fonts/Cairo.css';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Oxygen, sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+
+html[data-theme='dark'] body {
+    background-color: #1A1B1E;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
