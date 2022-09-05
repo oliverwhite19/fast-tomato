@@ -10,11 +10,19 @@ import { ThemeSwitch } from './components/ThemeSwitch/themeSwitch';
 import { Times } from './components/Timer';
 import { theme } from './styles';
 import { PersistGate } from 'zustand-persist';
+import { useEffect } from 'preact/hooks';
 
 const App = () => {
+    let darkTheme = false;
+
+    useEffect(function onFirstMount() {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }, []);
+
     const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
         key: 'mantine-color-scheme',
-        defaultValue: 'dark',
+        defaultValue: darkTheme ? 'dark' : 'light',
     });
     const toggleColorScheme = (value?: ColorScheme) => {
         const newTheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
