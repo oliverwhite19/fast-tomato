@@ -1,5 +1,7 @@
 import { StateUpdater, useEffect, useState } from 'preact/hooks';
 import { Center, Paper, RingProgress, Text } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import { screenSizes } from '../../styles';
 
 type Props = {
     initialTime: number;
@@ -10,6 +12,9 @@ type Props = {
 const Timer = ({ initialTime, onPhaseChange, isRunning }: Props) => {
     const [counter, setCounter] = useState(initialTime);
     const [startTime, setStartTime] = useState(initialTime);
+    const isSmallScreen = useMediaQuery(
+        `(max-width: ${screenSizes.largeMobile}px)`
+    );
 
     useEffect(() => {
         if (!isRunning) {
@@ -40,7 +45,7 @@ const Timer = ({ initialTime, onPhaseChange, isRunning }: Props) => {
                             color: 'red',
                         },
                     ]}
-                    size={500}
+                    size={isSmallScreen ? 200 : 500}
                     label={
                         <Text align={'center'}>
                             {Math.floor(counter / 60)}:
