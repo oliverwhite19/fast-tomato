@@ -31,7 +31,7 @@ const useTimerStore = create<TimerState>(
         },
         // @ts-ignore
         (set) => ({
-            focus: 5,
+            focus: 25 * 60,
             rounds: 4,
             shortBreak: 5 * 60,
             longBreak: 15 * 60,
